@@ -1,0 +1,138 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  background: #16202a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: "Inter", sans-serif;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.navbar-burger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e7ecf1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.navbar-burger:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.navbar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5a623 0%, #f2801f 100%);
+  color: #16202a;
+  flex-shrink: 0;
+}
+
+.navbar-titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.navbar-title {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #f4f6f8;
+  letter-spacing: 0.2px;
+}
+
+.navbar-subtitle {
+  font-size: 0.68rem;
+  color: #8fa0ae;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.navbar-stat {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c7d2da;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.35rem 0.7rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.navbar-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.navbar-status.is-live {
+  background: rgba(30, 184, 166, 0.18);
+  color: #1eb8a6;
+}
+
+.navbar-status.is-blocked {
+  background: rgba(224, 87, 76, 0.18);
+  color: #e0574c;
+}
+
+@media (max-width: 900px) {
+  .navbar-burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 0.85rem;
+  }
+  .navbar-subtitle {
+    display: none;
+  }
+  .navbar-stat {
+    display: none;
+  }
+}
