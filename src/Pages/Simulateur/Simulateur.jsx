@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LuPlus, LuShuffle, LuRotateCcw, LuGitGraph } from "react-icons/lu";
+import { LuPlus, LuPencil, LuShuffle, LuRotateCcw, LuGitGraph } from "react-icons/lu";
 import PetriInputModal from "../../components/PetriInputModal";
 import PetriNetView from "../../components/PetriNetView";
 import { usePetri } from "../../context/PetriContext";
@@ -7,6 +7,7 @@ import "./Modal.css";
 
 function Simulateur() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("new"); // "new" | "edit"
   const {
     places,
     transitions,
@@ -31,9 +32,26 @@ function Simulateur() {
         </div>
 
         <div className="sim-toolbar-actions">
-          <button className="sim-btn sim-btn-primary" onClick={() => setIsModalOpen(true)}>
+          <button
+            className="sim-btn sim-btn-primary"
+            onClick={() => {
+              setModalMode("new");
+              setIsModalOpen(true);
+            }}
+          >
             <LuPlus size={16} /> Nouveau réseau
           </button>
+          {hasNetwork && (
+            <button
+              className="sim-btn sim-btn-ghost"
+              onClick={() => {
+                setModalMode("edit");
+                setIsModalOpen(true);
+              }}
+            >
+              <LuPencil size={16} /> Modifier le réseau
+            </button>
+          )}
           <button
             className="sim-btn sim-btn-accent"
             onClick={fireRandom}
@@ -108,6 +126,9 @@ function Simulateur() {
       <PetriInputModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        initialPlaces={modalMode === "edit" ? places : null}
+        initialTransitions={modalMode === "edit" ? transitions : null}
+        initialArcs={modalMode === "edit" ? arcs : null}
         onSave={(newPlaces, newTransitions, newArcs) => {
           loadNetwork(newPlaces, newTransitions, newArcs);
           setIsModalOpen(false);
