@@ -15,3 +15,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+
+::-webkit-scrollbar{ width: 5px !important; height: 5px !important; }
+::-webkit-scrollbar-thumb{ background: #021337a4 !important; border-radius: 10px; }
+::-webkit-scrollbar-track{ background: transparent !important; }
